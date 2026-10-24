@@ -121,7 +121,10 @@ with st.sidebar:
                                              value=st.session_state.get("api_key", ""),
                                              help="Leave blank for Demo Mode. Key is kept in session only.")
     st.session_state.model = st.text_input("Model", value=st.session_state.get("model", "gemini-2.5-flash"))
-    st.success("🟢 Live AI mode") if st.session_state.api_key.strip() else st.warning("🟡 Demo mode (no key)")
+      if st.session_state.api_key.strip():
+       st.success("🟢 Live AI mode")
+   else:
+       st.warning("🟡 Demo mode (no key)")
     st.markdown("---")
     st.subheader("🧭 Architecture")
     st.markdown("""
